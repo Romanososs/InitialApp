@@ -8,3 +8,17 @@ captures
 .cxx
 local.properties
 xcuserdata
+ios/buildConfiguration/.idea/
+/.idea/
+android/.idea/
+android/build/
+*/xcuserdata/*
+*/xcuserdatad/*
+*.generated.swift
+*.xcuserstate
+*.idea*
+_Builds/*
+xcodebuild.log
+Pods/
+./Pods/*
+*/.DS_Store

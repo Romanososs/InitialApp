@@ -1,0 +1,13 @@
+CREATE TABLE ShapeTools (
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+tool TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM ShapeTools;
+
+insert:
+INSERT INTO ShapeTools(tool) VALUES(?);
+
+deleteAll:
+DELETE FROM ShapeTools;

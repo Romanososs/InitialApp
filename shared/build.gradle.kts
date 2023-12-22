@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -30,7 +32,22 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(libs.decompose)
+
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
+
+            implementation(libs.koin.core)
+
+            implementation(libs.multiplatform.settings)
+        }
+        androidMain.dependencies {
+            implementation(libs.koin.android)
+            implementation(libs.sqldelight.andoid.driver)
+        }
+        iosMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -43,5 +60,13 @@ android {
     compileSdk = 34
     defaultConfig {
         minSdk = 26
+    }
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.example.initialapp")
+        }
     }
 }

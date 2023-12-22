@@ -1,0 +1,13 @@
+CREATE TABLE Image (
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+shape TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM Image;
+
+insert:
+INSERT INTO Image(shape) VALUES(?);
+
+deleteAll:
+DELETE FROM Image;

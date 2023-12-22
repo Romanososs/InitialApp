@@ -24,11 +24,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,9 +36,20 @@ android {
 
 dependencies {
     implementation(projects.shared)
+
+    implementation(project.dependencies.platform(libs.compose.bom))
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
+
     implementation(libs.androidx.activity.compose)
+
+    implementation(libs.decompose)
+    implementation(libs.decompose.extensions.compose.jetpack)
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.android.compose)
+
     debugImplementation(libs.compose.ui.tooling)
 }

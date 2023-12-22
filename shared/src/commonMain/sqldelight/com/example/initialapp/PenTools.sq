@@ -1,0 +1,13 @@
+CREATE TABLE PenTools (
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+tool TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM PenTools;
+
+insert:
+INSERT INTO PenTools(tool) VALUES(?);
+
+deleteAll:
+DELETE FROM PenTools;
