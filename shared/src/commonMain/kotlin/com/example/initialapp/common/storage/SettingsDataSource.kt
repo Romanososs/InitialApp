@@ -7,6 +7,9 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 interface SettingsDataSource {
+    fun getIsDarkMode(): Boolean?
+    fun setIsDarkMode(value: Boolean?)
+
     fun getPenToolIndex(): Int
     fun setPenToolIndex(value: Int)
 
@@ -22,8 +25,17 @@ class SettingsDataSourceImpl : SettingsDataSource, KoinComponent {
         private const val PEN_TOOL_KEY = "PEN_TOOL_KEY"
         private const val SHAPE_TOOL_KEY = "SHAPE_TOOL_KEY"
         private const val COLOR_KEY = "COLOR_KEY"
+        private const val IS_DARK_MODE_KEY = "IS_DARK_MODE_KEY"
     }
     private val settings: Settings by inject()
+
+    override fun getIsDarkMode(): Boolean? {
+        return settings.getBooleanOrNull(IS_DARK_MODE_KEY)
+    }
+
+    override fun setIsDarkMode(value: Boolean?) {
+        settings[IS_DARK_MODE_KEY] = value
+    }
 
     override fun getPenToolIndex(): Int {
         return settings.getInt(PEN_TOOL_KEY, 0)
